@@ -1,0 +1,36 @@
+.banner-container {
+    width: 100%; /* Fixed width */
+    height: 100%; /* Fixed height */
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    background: black;
+  }
+  
+  .banner-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+  
+  .banner-image.active {
+    opacity: 1;
+  }
+  
+  /* Move the offer container to the left-most side */
+  .offer-container {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 18px;
+  }
+  

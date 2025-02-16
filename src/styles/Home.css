@@ -1,0 +1,516 @@
+
+/* General Page Styling */
+.home-container {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  padding-top: 100px;
+}
+
+
+
+
+/* Wishlist button */
+.wishlist-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.wishlist-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Product rating */
+.product-rating {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.product-rating svg {
+  margin: 0 2px;
+}
+
+.banner-and-recent {
+  display: flex;
+  width: 100%;
+  height: 420px; /* Slightly taller for better visuals */
+  gap: 15px; /* Spacing between sections */
+  padding: 20px;
+}
+/* 🌈 Colorful Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0;
+  gap: 12px;
+  list-style: none;
+}
+
+/* Pagination Buttons */
+.pagination li {
+  display: inline-block;
+}
+
+/* Pagination Links */
+.pagination a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 12px;
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Colorful Backgrounds */
+.pagination li:nth-child(1) a { background: linear-gradient(45deg, #ff4b2b, #ff416c); }
+.pagination li:nth-child(2) a { background: linear-gradient(45deg, #ff8c00, #ffcc00); }
+.pagination li:nth-child(3) a { background: linear-gradient(45deg, #00c6ff, #0072ff); }
+.pagination li:nth-child(4) a { background: linear-gradient(45deg, #32ff7e, #00b894); }
+.pagination li:nth-child(5) a { background: linear-gradient(45deg, #8e44ad, #c0392b); }
+.pagination li:nth-child(6) a { background: linear-gradient(45deg, #fd79a8, #e84393); }
+
+/* Hover Effect */
+.pagination a:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 15px rgba(255, 140, 0, 0.6);
+  filter: brightness(1.2);
+}
+
+/* Active Page */
+.pagination .active a {
+  background: linear-gradient(45deg, #ffcc00, #ff8800);
+  color: #222;
+  font-weight: bold;
+  transform: scale(1.15);
+  box-shadow: 0px 0px 20px rgba(255, 204, 0, 0.6);
+}
+
+/* Previous & Next Buttons */
+.pagination .prev-next {
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+}
+
+.pagination .prev-next:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 15px rgba(106, 17, 203, 0.6);
+}
+
+/* Disabled Button */
+.pagination .disabled a {
+  background: rgba(100, 100, 100, 0.4);
+  color: #888;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Smooth Slide Animation */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pagination li {
+  animation: slideIn 0.4s ease-in-out;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .pagination {
+    flex-wrap: wrap;
+  }
+
+  .pagination a {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+}
+
+/* 🔥 Offer Banner - Stylish Look */
+.offer-banner {
+  flex: 7; /* 70% width */
+  height: 100%;
+  background: linear-gradient(135deg,  #ff9a9e, #ea6906); /* Gradient */
+  border-radius: 15px; /* Rounded edges */
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: transform 0.3s ease-in-out;
+}
+
+
+/* 🎯 Recently Added Products - Modern Card Look */
+.recently-added-products {
+  flex: 3; /* 30% width */
+  height: 91%;
+  background: linear-gradient(135deg,  #ff9a9e, #ea6906);
+  border-radius: 15px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.recently-added-products:hover {
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* 🌟 Responsive Design */
+@media (max-width: 768px) {
+  .banner-and-recent {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .offer-banner,
+  .recently-added-products {
+    width: 100%;
+    height: 300px; /* Adjust height for smaller screens */
+  }
+}
+
+/* General Page Styling */
+.home-container {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  padding-top: 100px;
+  transition: background 0.3s ease-in-out;
+}
+
+/* Dark Mode */
+.dark-mode .home-container {
+  background: linear-gradient(135deg, #1e1e1e, #3a3a3a);
+  color: #ffffff;
+}
+
+/* Animated Banner */
+.banner-container {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.banner {
+  display: flex;
+  gap: 20px;
+  animation: slide 15s linear infinite;
+}
+
+@keyframes slide {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
+/* Glassmorphism UI */
+.glass-card {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Product Hover Effects */
+.product-card:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s ease-in-out;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Live Search */
+.live-search-results {
+  position: absolute;
+  background: white;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Trending Products Section */
+.trending-products {
+  margin-top: 40px;
+  padding: 20px;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  border-radius: 10px;
+}
+
+/* Wishlist Button */
+.wishlist-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #ff4500;
+}
+
+.wishlist-btn:hover {
+  transform: scale(1.2);
+}
+
+/* Product Sorting */
+.sort-dropdown {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+/* Navbar Styling */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(255, 111, 97,0.9); /* 40% transparency */
+  padding: 10px 5px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar a {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 15px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  border-radius: 5px;
+}
+
+/* Navbar Title Styling */
+.navbar h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin: 0;
+  color: #f4f4f4;
+  flex-shrink: 0;
+}
+
+/* Navbar Links Container */
+.navbar-links {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+/* Navbar Button */
+.navbar .nav-btn {
+  background: #ffd700;
+  padding: 10px 15px;
+  border-radius: 5px;
+  color: black;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.navbar .nav-btn:active {
+  background: #ffbf00;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .navbar h1 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .navbar-links {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .navbar a {
+    padding: 8px 12px;
+    font-size: 1rem;
+  }
+}
+
+/* Navbar Title Styling */
+.navbar h1 {
+  font-size: 1.8rem;
+  color: #333;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+  background: linear-gradient(45deg, #007bff, #ff4500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-left: 20px; /* Ensure text is visible and not cut off */
+}
+
+/* Page Title */
+h1 {
+  font-size: 3rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  background: linear-gradient(45deg, #007bff, #ff4500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeIn 1s ease-in-out;
+  padding-top: 20px; /* Ensure it's not hidden behind navbar */
+}
+
+/* Search Bar & Cart Button Container */
+.search-cart-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 30px;
+  padding: 0 20px;
+}
+
+/* Search Bar */
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  
+}
+
+.search-bar input {
+  width: 350px;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 30px;
+  font-size: 16px;
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+  padding-right: 50px;
+  color: #333;
+}
+
+.search-bar input:focus {
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 3px 10px rgba(0, 123, 255, 0.3);
+}
+
+.search-bar .search-icon {
+  position: absolute;
+  right: 15px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.search-bar .search-icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Cart Button */
+.cart-btn {
+  
+  margin-left: auto; /* Pushes it to the right */
+  display: flex;
+  justify-content: flex-end;
+
+  background: linear-gradient(45deg, #ff4500, #ff6a00);
+  color: white;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(255, 69, 0, 0.3);
+}
+
+.cart-btn:hover {
+  background: linear-gradient(45deg, #e03e00, #ff8c00);
+  transform: scale(1.05);
+}
+
+/* Ensure Navbar Doesn't Overlap Content */
+.navbar + * {
+  margin-top: 60px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .search-cart-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .search-bar input {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .banner-container {
+    max-height: 250px;
+  }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

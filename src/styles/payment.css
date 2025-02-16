@@ -1,0 +1,135 @@
+.payment-container {
+  text-align: center;
+  padding: 25px;
+  max-width: 450px;
+  margin: auto;
+  background: var(--bg-color);
+  border-radius: 15px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+h1 {
+  color: var(--text-color);
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+h2 {
+  color: var(--highlight-color);
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.payment-options {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.payment-btn {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.payment-btn:hover {
+  background: var(--primary-dark);
+}
+
+.card-form, .upi-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+input {
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--input-bg);
+  color: var(--text-color);
+  transition: 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+}
+
+.qr-code {
+  width: 200px;
+  height: 200px;
+  margin: 15px auto;
+  display: block;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.pay-btn {
+  background: var(--success-color);
+  color: white;
+  padding: 12px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.pay-btn:hover {
+  background: var(--success-dark);
+}
+
+.timer-text {
+  margin-top: 20px;
+  color: red;
+  font-weight: bold;
+}
+
+.cancel-btn {
+  background: var(--danger-color);
+  color: white;
+  padding: 12px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  margin-top: 15px;
+  transition: 0.3s;
+}
+
+.cancel-btn:hover {
+  background: var(--danger-dark);
+}
+
+/* Light and Dark mode variables */
+:root {
+  --bg-color: #fff;
+  --text-color: #333;
+  --primary-color: #007bff;
+  --primary-dark: #0056b3;
+  --success-color: #28a745;
+  --success-dark: #218838;
+  --danger-color: #dc3545;
+  --danger-dark: #c82333;
+  --highlight-color: #f39c12;
+  --border-color: #ccc;
+  --input-bg: #f9f9f9;
+}
+
+[data-theme="dark"] {
+  --bg-color: #222;
+  --text-color: #fff;
+  --border-color: #555;
+  --input-bg: #333;
+}
