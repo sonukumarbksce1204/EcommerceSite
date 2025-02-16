@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FaHeart, FaRegHeart, FaStar, FaRegStar } from "react-icons/fa";
-import { FaSearch } from "react-icons/fa";
 import Navbar from "../components/Navbar";
 import OfferBanner from "../components/OfferBanner";
 import "../styles/Home.css";
