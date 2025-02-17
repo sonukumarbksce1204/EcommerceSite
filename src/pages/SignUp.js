@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom"; // Import Link from react-router-dom
 import api from "../utils/api"; // Ensure API is correctly imported
 import "../styles/signup.css"; // Ensure the CSS file exists
 
@@ -22,7 +22,7 @@ function SignUp() {
 
     try {
       // Make POST request to backend API
-      const { data } = await api.post("/users/register", {
+      const { data } = await api.post("https://ecommerce-l7q0.onrender.com/api/users/register", {
         name,
         email,
         password,
@@ -68,7 +68,8 @@ function SignUp() {
           />
           <button type="submit" className="signup-btn">Sign Up</button>
         </form>
-        <a href="/signin" className="auth-link">Already have an account? Sign In</a>
+        {/* Use Link to navigate to the sign-in page */}
+        <Link to="/signin" className="auth-link">Already have an account? Sign In</Link>
       </div>
     </div>
   );

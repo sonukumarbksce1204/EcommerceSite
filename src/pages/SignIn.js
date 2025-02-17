@@ -15,14 +15,14 @@ function SignIn() {
 
     try {
       // Send request to backend API
-      const { data } = await api.post("api/users/login", { email, password });
+      const { data } = await api.post("https://ecommerce-l7q0.onrender.com/api/users/login", { email, password });
 
       // Store JWT token & user details in local storage
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
       alert("Login successful!");
-      navigate("/"); // Redirect to home page after successful login
+      navigate("/home"); // Redirect to home page after successful login
     } catch (err) {
       setError(err.response?.data?.message || "Invalid credentials. Please try again.");
     }
@@ -52,7 +52,7 @@ function SignIn() {
           />
           <button type="submit" className="signin-btn">Sign In</button>
         </form>
-        <a href="/signup" className="auth-link">Don't have an account? Sign up</a>
+        <a href="/signup" className="auth-link">Don't have an account? Sign up</a> {/* Updated to /register */}
       </div>
     </div>
   );
