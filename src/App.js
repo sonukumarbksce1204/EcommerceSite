@@ -4,7 +4,7 @@ import SignUp from "./pages/SignUp";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Payment from "./pages/Payment";
-import ProtectedRoute from "./utils/ProtectedRoute"; // Import ProtectedRoute
+import ProtectedRoute from "./utils/ProtectedRoute";  // Import ProtectedRoute to protect certain routes
 import "./styles/styles.css"; // Global styles
 
 function App() {
