@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../utils/api"; // Ensure the correct API import
-import "../styles/signin.css";
+import api from "../utils/api"; // Import API
+import "../styles/signin.css"; // Ensure CSS file exists
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -14,17 +14,17 @@ function SignIn() {
     setError(""); // Clear previous error messages
 
     try {
-      // Correct API call to your backend login route
-      const { data } = await api.post("/api/users/login", { email, password });
+      // Send request to backend API
+      const { data } = await api.post("api/users/login", { email, password });
 
       // Store JWT token & user details in local storage
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
       alert("Login successful!");
-      navigate("/home"); // Redirect to the home page after successful login
+      navigate("/"); // Redirect to home page after successful login
     } catch (err) {
-      setError(err.response?.data?.message || "Invalid email or password. Please try again.");
+      setError(err.response?.data?.message || "Invalid credentials. Please try again.");
     }
   };
 
