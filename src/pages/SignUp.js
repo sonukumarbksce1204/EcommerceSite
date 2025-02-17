@@ -27,7 +27,7 @@ function SignUp() {
         email,
         password,
       });
-
+      console.log(data);
       alert("Registration successful! Please log in.");
       navigate("/signin"); // Redirect to sign-in page
     } catch (err) {
