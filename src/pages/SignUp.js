@@ -15,8 +15,8 @@ function SignUp() {
     e.preventDefault();
 
     try {
-      // Correct API call to your backend register route
-      const { data } = await api.post("/api/users/register", user);
+      // Making API call without destructuring 'data' to avoid ESLint error
+      await api.post("/api/users/register", user);
 
       alert("Signup successful! Please login.");
       navigate("/signin");
