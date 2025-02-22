@@ -1,29 +1,23 @@
 import { Routes, Route } from "react-router-dom";
+import ProtectedRoute from "./utils/ProtectedRoute";
+import HomePage from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import Home from "./pages/Home";
-import Cart from "./pages/Cart";
-import Payment from "./pages/Payment";
-import ProtectedRoute from "./utils/ProtectedRoute";  // Import ProtectedRoute to protect certain routes
-import "./styles/styles.css";  // Global styles
-import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
+    <Routes>
+      <Route path="/signin" element={<SignIn />} />
+      <Route path="/signup" element={<SignUp />} />
 
-        <Route element={<ProtectedRoute />}>
-          <Route path="/home" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/payment" element={<Payment />} />
-        </Route>
+      {/* Protected Routes */}
+      <Route element={<ProtectedRoute />}>
+        <Route path="/home" element={<HomePage />} />
+      </Route>
 
-        <Route path="*" element={<SignIn />} />
-      </Routes>
-     </Router>
+      {/* Fallback Route */}
+      <Route path="*" element={<SignIn />} />
+    </Routes>
   );
 }
 

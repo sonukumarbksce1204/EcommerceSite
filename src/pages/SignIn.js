@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import api from "../utils/api"; // Import API
-import "../styles/signin.css"; // Ensure CSS file exists
+import { useNavigate, Link } from "react-router-dom";
+import axios from "axios"; // Use axios for API requests
+import "../styles/signin.css"; // Ensure this CSS file exists
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -14,15 +14,19 @@ function SignIn() {
     setError(""); // Clear previous error messages
 
     try {
-      // Send request to backend API
-      const { data } = await api.post("https://ecommerce-l7q0.onrender.com/api/users/login", { email, password });
+      // API call to backend login endpoint
+      const { data } = await axios.post(
+        "https://ecommerce-l7q0.onrender.com/api/users/login",
+        { email, password },
+        { headers: { "Content-Type": "application/json" } }
+      );
 
-      // Store JWT token & user details in local storage
+      // Store JWT token & user details in localStorage
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
       alert("Login successful!");
-      navigate("/home"); // Redirect to home page after successful login
+      navigate("/home"); // Redirect to home page
     } catch (err) {
       setError(err.response?.data?.message || "Invalid credentials. Please try again.");
     }
@@ -52,7 +56,8 @@ function SignIn() {
           />
           <button type="submit" className="signin-btn">Sign In</button>
         </form>
-        <a href="/signup" className="auth-link">Don't have an account? Sign up</a> {/* Updated to /register */}
+        {/* ✅ Corrected SignUp Link */}
+        <Link to="/signup" className="auth-link">Don't have an account? Sign up</Link>
       </div>
     </div>
   );

@@ -8,31 +8,37 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     setError(""); // Clear previous errors
+    setLoading(true); // Set loading state
 
-    // Basic input validation before making API call
+    // Basic input validation
     if (!name || !email || !password) {
       setError("All fields are required.");
+      setLoading(false);
       return;
     }
 
     try {
-      // Make POST request to backend API
       const { data } = await api.post("https://ecommerce-l7q0.onrender.com/api/users/register", {
         name,
         email,
         password,
       });
-      console.log(data);
+
+      // ✅ Store user data in localStorage
+      localStorage.setItem("user", JSON.stringify(data.user));
+
       alert("Registration successful! Please log in.");
       navigate("/signin"); // Redirect to sign-in page
     } catch (err) {
-      // Check if backend sent a specific error message
       setError(err.response?.data?.message || "Registration failed. Try again.");
+    } finally {
+      setLoading(false); // Stop loading
     }
   };
 
@@ -66,9 +72,11 @@ function SignUp() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button type="submit" className="signup-btn">Sign Up</button>
+          <button type="submit" className="signup-btn" disabled={loading}>
+            {loading ? "Signing Up..." : "Sign Up"}
+          </button>
         </form>
-        {/* Use Link to navigate to the sign-in page */}
+        {/* Link to sign-in page */}
         <Link to="/signin" className="auth-link">Already have an account? Sign In</Link>
       </div>
     </div>

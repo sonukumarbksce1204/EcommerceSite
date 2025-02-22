@@ -1,24 +1,9 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ProtectedRoute from "../utils/ProtectedRoute";
-import HomePage from "../pages/Home";
-import SignIn from "../pages/SignIn";
-import SignUp from "../pages/SignUp";
+import { Navigate, Outlet } from "react-router-dom";
 
-// Main Router Setup
-function App() {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/signin" element={<SignIn />} />
-        <Route path="/signup" element={<SignUp />} />
-        
-        {/* Protected Route */}
-        <Route element={<ProtectedRoute />}>
-          <Route path="/home" element={<HomePage />} />
-        </Route>
-      </Routes>
-    </Router>
-  );
-}
+const ProtectedRoute = () => {
+  const token = localStorage.getItem("token"); // Check if user is authenticated
 
-export default App;
+  return token ? <Outlet /> : <Navigate to="/signin" replace />;
+};
+
+export default ProtectedRoute;
