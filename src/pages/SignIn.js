@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import axios from "axios"; // Use axios for API requests
-import "../styles/signin.css"; // Ensure this CSS file exists
+import axios from "axios";
+import "../styles/signin.css"; 
 
 function SignIn() {
   const [email, setEmail] = useState("");
@@ -11,29 +11,34 @@ function SignIn() {
 
   const handleSignIn = async (e) => {
     e.preventDefault();
-    setError(""); // Clear previous error messages
+    setError(""); 
 
     try {
-      // API call to backend login endpoint
       const { data } = await axios.post(
         "https://ecommerce-l7q0.onrender.com/api/users/login",
         { email, password },
         { headers: { "Content-Type": "application/json" } }
       );
 
-      // Store JWT token & user details in localStorage
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
 
       alert("Login successful!");
-      navigate("/home"); // Redirect to home page
+      navigate("/home"); 
     } catch (err) {
       setError(err.response?.data?.message || "Invalid credentials. Please try again.");
     }
   };
 
   return (
+
+    
     <div className="signin-container">
+      {/* 🔵 Animated Floating Orbs */}
+      <div className="glowing-orb orb1"></div>
+      <div className="glowing-orb orb2"></div>
+      <div className="glowing-orb orb3"></div>
+      <div className="glowing-orb orb4"></div>
       <div className="signin-box">
         <h2>Sign In</h2>
         {error && <p className="error-message">{error}</p>}
@@ -56,7 +61,6 @@ function SignIn() {
           />
           <button type="submit" className="signin-btn">Sign In</button>
         </form>
-        {/* ✅ Corrected SignUp Link */}
         <Link to="/signup" className="auth-link">Don't have an account? Sign up</Link>
       </div>
     </div>

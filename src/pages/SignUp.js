@@ -44,6 +44,10 @@ function SignUp() {
 
   return (
     <div className="signup-container">
+      <div className="glowing-orb orb1"></div>
+      <div className="glowing-orb orb2"></div>
+      <div className="glowing-orb orb3"></div>
+      <div className="glowing-orb orb4"></div>
       <div className="signup-box">
         <h2>Sign Up</h2>
         {error && <p className="error-message">{error}</p>}
