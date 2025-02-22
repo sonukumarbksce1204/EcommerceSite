@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { QRCodeCanvas } from "qrcode.react"; // Import QR Code Generator
+import { QRCodeCanvas } from "qrcode.react"; // QR Code Generator
+import { motion } from "framer-motion"; // Animations
 import "../styles/payment.css";
 
 function Payment() {
@@ -18,7 +19,7 @@ function Payment() {
     const interval = setInterval(() => {
       setTimer((prev) => {
         if (prev === 1) {
-          alert("Session expired! Please try again.");
+          alert("⏳ Session expired! Please try again.");
           navigate("/cart");
           clearInterval(interval);
           return 0;
@@ -32,10 +33,10 @@ function Payment() {
 
   const handlePayment = () => {
     if (paymentMethod === "card" && (!cardDetails.number || !cardDetails.expiry || !cardDetails.cvv)) {
-      alert("Please enter all card details!");
+      alert("⚠ Please enter all card details!");
       return;
     } else if (paymentMethod === "upi" && !upiId) {
-      alert("Please enter a valid UPI ID!");
+      alert("⚠ Please enter a valid UPI ID!");
       return;
     }
 
@@ -48,42 +49,92 @@ function Payment() {
   };
 
   return (
-    <div className="payment-container">
-      <h1>💳 Payment Page</h1>
+    <motion.div 
+      className="payment-container"
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, ease: "easeInOut" }}
+    >
+      <h1>💳 Secure Payment</h1>
       <h2>Total Amount: ₹{totalAmount}</h2>
 
-      <div className="payment-options">
-        <button onClick={() => setPaymentMethod("card")}>Pay via Card</button>
-        <button onClick={() => setPaymentMethod("upi")}>Pay via UPI</button>
-        <button onClick={() => setPaymentMethod("qr")}>Pay via QR Code</button>
-      </div>
+      <motion.div 
+        className="payment-options"
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.2 }}
+      >
+        <button className="payment-btn" onClick={() => setPaymentMethod("card")}>💳 Card</button>
+        <button className="payment-btn" onClick={() => setPaymentMethod("upi")}>📱 UPI</button>
+        <button className="payment-btn" onClick={() => setPaymentMethod("qr")}>🔳 QR Code</button>
+      </motion.div>
 
       {paymentMethod === "card" && (
-        <div className="card-form">
-          <input type="text" placeholder="Card Number" onChange={(e) => setCardDetails({ ...cardDetails, number: e.target.value })} />
-          <input type="text" placeholder="MM/YY" onChange={(e) => setCardDetails({ ...cardDetails, expiry: e.target.value })} />
-          <input type="text" placeholder="CVV" onChange={(e) => setCardDetails({ ...cardDetails, cvv: e.target.value })} />
-          <button onClick={handlePayment} disabled={loading}>{loading ? "Processing..." : `Pay ₹${totalAmount}`}</button>
-        </div>
+        <motion.div className="card-form">
+          <div className="input-group">
+            <label>💳 </label>
+            <input 
+              type="text" 
+              placeholder="Enter card number"
+              value={cardDetails.number}
+              onChange={(e) => setCardDetails({ ...cardDetails, number: e.target.value })} 
+            />
+          </div>
+
+          <div className="input-group">
+            <label>📅 </label>
+            <input 
+              type="text" 
+              placeholder="MM/YY"
+              value={cardDetails.expiry}
+              onChange={(e) => setCardDetails({ ...cardDetails, expiry: e.target.value })} 
+            />
+          </div>
+
+          <div className="input-group">
+            <label>🔒</label>
+            <input 
+              type="text"
+              placeholder="CVV" 
+              value={cardDetails.cvv}
+              onChange={(e) => setCardDetails({ ...cardDetails, cvv: e.target.value })} 
+            />
+          </div>
+
+          <button className="pay-btn" onClick={handlePayment} disabled={loading}>
+            {loading ? "Processing..." : `Pay ₹${totalAmount}`}
+          </button>
+        </motion.div>
       )}
 
       {paymentMethod === "upi" && (
-        <div className="upi-section">
-          <input type="text" placeholder="Your UPI ID" onChange={(e) => setUpiId(e.target.value)} />
-          <button onClick={handlePayment} disabled={loading}>{loading ? "Processing..." : `Pay ₹${totalAmount}`}</button>
-        </div>
+        <motion.div className="upi-section">
+          <div className="input-group">
+            <label>📲 </label>
+            <input 
+              type="text" 
+              value={upiId}
+              placeholder="Enter UPI ID"
+              onChange={(e) => setUpiId(e.target.value)} 
+            />
+          </div>
+
+          <button className="pay-btn" onClick={handlePayment} disabled={loading}>
+            {loading ? "Processing..." : `Pay ₹${totalAmount}`}
+          </button>
+        </motion.div>
       )}
 
       {paymentMethod === "qr" && (
-        <div className="qr-section">
-          <QRCodeCanvas value={`upi://pay?pa=yourupi@bank&pn=YourName&am=${totalAmount}&cu=INR`} size={200} />
-          <p>Scan this QR Code using any UPI app</p>
-        </div>
+        <motion.div className="qr-section">
+          <QRCodeCanvas value={`upi://pay?pa=yourupi@bank&pn=YourName&am=${totalAmount}&cu=INR`} size={220} />
+          <p>🔍 Scan this QR Code using any UPI app</p>
+        </motion.div>
       )}
 
-      <p>Session expires in: {Math.floor(timer / 60)}:{(timer % 60).toString().padStart(2, "0")}</p>
-      <button onClick={() => navigate("/cart")}>Cancel</button>
-    </div>
+      <p className="timer-text">⏳ Session expires in: {Math.floor(timer / 60)}:{(timer % 60).toString().padStart(2, "0")}</p>
+      <button className="cancel-btn" onClick={() => navigate("/cart")}>❌ Cancel</button>
+    </motion.div>
   );
 }
 

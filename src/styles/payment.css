@@ -1,26 +1,36 @@
+/* Animated Gradient Background */
+body {
+  background: linear-gradient(-45deg, #ff6b6b, #ffcc5c, #2ec4b6, #5c6bc0);
+  background-size: 400% 400%;
+  animation: gradientBG 8s ease infinite;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Payment Box - Stands Out from Background */
 .payment-container {
   text-align: center;
-  padding: 25px;
+  padding: 30px;
   max-width: 450px;
   margin: auto;
-  background: var(--bg-color);
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 15px;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.5); /* Stronger shadow effect */
+  backdrop-filter: blur(15px);
   transition: all 0.3s ease-in-out;
 }
 
-h1 {
-  color: var(--text-color);
-  font-size: 1.8rem;
-  margin-bottom: 15px;
+/* Header Styling */
+h1, h2 {
+  color: #333;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-h2 {
-  color: var(--highlight-color);
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-}
-
+/* Payment Options */
 .payment-options {
   display: flex;
   justify-content: center;
@@ -29,107 +39,88 @@ h2 {
 }
 
 .payment-btn {
-  background: var(--primary-color);
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
   color: white;
   border: none;
-  padding: 12px 18px;
+  padding: 12px 20px;
   font-size: 1rem;
   cursor: pointer;
-  border-radius: 8px;
-  transition: 0.3s;
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .payment-btn:hover {
-  background: var(--primary-dark);
+  transform: scale(1.1);
+  box-shadow: 0px 4px 10px rgba(255, 65, 108, 0.5);
 }
 
+/* Form Fields */
 .card-form, .upi-section {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 15px;
   margin-top: 20px;
 }
 
+.input-group {
+  display: flex;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+}
+
 input {
+  flex: 1;
   padding: 12px;
-  border: 1px solid var(--border-color);
+  border: none;
   border-radius: 8px;
   font-size: 1rem;
-  background: var(--input-bg);
-  color: var(--text-color);
+  background: rgba(255, 255, 255, 0.8);
+  color: black;
   transition: 0.3s;
 }
 
 input:focus {
   outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
+  background: white;
 }
 
-.qr-code {
-  width: 200px;
-  height: 200px;
-  margin: 15px auto;
-  display: block;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-}
-
+/* Pay Button */
 .pay-btn {
-  background: var(--success-color);
+  background: linear-gradient(135deg, #28a745, #218838);
   color: white;
-  padding: 12px;
+  padding: 14px;
   border: none;
   font-size: 1rem;
   cursor: pointer;
-  border-radius: 8px;
-  transition: 0.3s;
+  border-radius: 10px;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .pay-btn:hover {
-  background: var(--success-dark);
+  transform: scale(1.05);
+  box-shadow: 0px 4px 10px rgba(40, 167, 69, 0.5);
 }
 
+/* Timer */
 .timer-text {
   margin-top: 20px;
-  color: red;
+  color: #ffcc00;
   font-weight: bold;
 }
 
+/* Cancel Button */
 .cancel-btn {
-  background: var(--danger-color);
+  background: linear-gradient(135deg, #dc3545, #c82333);
   color: white;
-  padding: 12px;
+  padding: 14px;
   border: none;
   font-size: 1rem;
   cursor: pointer;
-  border-radius: 8px;
-  margin-top: 15px;
-  transition: 0.3s;
+  border-radius: 10px;
 }
 
 .cancel-btn:hover {
-  background: var(--danger-dark);
-}
-
-/* Light and Dark mode variables */
-:root {
-  --bg-color: #fff;
-  --text-color: #333;
-  --primary-color: #007bff;
-  --primary-dark: #0056b3;
-  --success-color: #28a745;
-  --success-dark: #218838;
-  --danger-color: #dc3545;
-  --danger-dark: #c82333;
-  --highlight-color: #f39c12;
-  --border-color: #ccc;
-  --input-bg: #f9f9f9;
-}
-
-[data-theme="dark"] {
-  --bg-color: #222;
-  --text-color: #fff;
-  --border-color: #555;
-  --input-bg: #333;
+  transform: scale(1.05);
 }
